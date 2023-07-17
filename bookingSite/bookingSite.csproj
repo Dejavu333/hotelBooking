@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Views\imgs\hotelsImgs\abandonedHotel.jpg" />
+    <Content Include="Views\imgs\hotelsImgs\beachHotel.jpg" />
+    <Content Include="Views\imgs\hotelsImgs\cifraHotel.jpg" />
+    <Content Include="Views\imgs\hotelsImgs\countryHotel.jpg" />
+    <Content Include="Views\imgs\hotelsImgs\forestHotel.jpg" />
+    <Content Include="Views\imgs\hotelsImgs\pagodaHotel.jpg" />
+    <Content Include="Views\imgs\hotelsImgs\whiteHotel.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="wwwroot\imgs\roomsImgs\1.jpg" />
+    <None Include="wwwroot\imgs\roomsImgs\10.jpg" />
+    <None Include="wwwroot\imgs\roomsImgs\2.jpg" />
+    <None Include="wwwroot\imgs\roomsImgs\3.jpg" />
+    <None Include="wwwroot\imgs\roomsImgs\4.jpg" />
+    <None Include="wwwroot\imgs\roomsImgs\5.jpg" />
+    <None Include="wwwroot\imgs\roomsImgs\6.jpg" />
+    <None Include="wwwroot\imgs\roomsImgs\7.jpg" />
+    <None Include="wwwroot\imgs\roomsImgs\8.jpg" />
+    <None Include="wwwroot\imgs\roomsImgs\9.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\" />
+    <Folder Include="wwwroot\webfonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+    <PackageReference Include="MongoDB.Bson" Version="2.17.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.17.0" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.17.0" />
+  </ItemGroup>
+
+</Project>

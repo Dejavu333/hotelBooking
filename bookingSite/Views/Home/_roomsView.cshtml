@@ -1,0 +1,48 @@
+﻿@{
+    @using bookingSite.Models;
+    @using MongoDB.Bson;
+
+    List<Room> rooms = ViewData["roomsSearched"] as List<Room>;
+
+    string[] cardClassNames = new string[] { "middle", "next", "prev", "rightmost", "leftmost" };
+}
+
+<ul class="rooms list bottomLayer" onclick="slideViaClick(event.target)">
+    @{
+        <!--for each Hotel received renders an info card-->
+        int i = 0;
+        foreach (Room r in rooms)
+        {
+                    <!--position*-->
+                    <li id="@r._id" class="@cardClassNames[i]">
+
+                        <div class="content">
+
+                            <!--card title-->
+                            <h3 id="hotelName">@r._name</h3>
+
+                            <!--book icon-->
+                            <i id="bookIcon" onclick="startBooking()" class="fa-regular fa-font-awesome"></i>
+
+                            <!--save icon-->
+                            <i style="float:right;margin-top: 0.85rem;" class="fa-solid fa-floppy-disk fa-lg"></i>
+
+                            <!--image of the hotel-->
+                            <img draggable="false" class="cardImg" src="~/imgs/roomsImgs/@r._imgPath"><br>
+
+                            <!--details-->
+                            <span id="pricePerNight">@r._pricePerNight</span><span> $/night</span><br>
+                            <span>For @r._capacity</span><br>
+                            <span>@r._description</span><br>
+
+                        </div>
+
+                    </li>
+
+            if (i < 4) { i++; }
+
+        }
+                <!--foreach ends-->
+    }<!--code block ends-->
+
+</ul>

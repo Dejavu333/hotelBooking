@@ -1,0 +1,34 @@
+﻿@{
+    @using bookingSite.Models;
+    List<Booking> bookings = ViewData["bookings"] as List<Booking>;
+}
+<h2>My Bookings</h2>
+<input id="emailInp" class="userInpText" type="text" placeholder="email"></input>
+<button type="button" onclick="getBookingsByEmail()">Show</button>
+<br>
+@if (bookings != null && bookings.Count>0)
+{
+    @foreach (Booking r in bookings)
+    {
+        <div id="r._id" class="booking">
+            <h3>@r.hotelName</h3><br>
+            <span>Arrival: @r.checkInDate.ToString()</span><br>
+            <span>Leaving: @r.checkOutDate.ToString()</span><br>
+            <span>Price:@r.price $</span><br>
+            @for (int i = 0; i < r.guestNames.Length; i++)
+            {
+                <span>Name:@r.guestNames[i]  </span><br>
+            }
+            @*  @if ((DateTime.Now - r.checkInDate).TotalDays > 1)
+        {
+        }*@
+            <button type="button" onclick="deleteBooking('@r._id')">Cancel</button>
+
+        </div>
+    }
+}
+else
+{
+    <span>You don't have any</span>
+}
+</div>

@@ -1,0 +1,77 @@
+﻿@{
+    @using bookingSite.Models;
+    
+    ViewData["Title"] = "Admin Page";
+	var hotels = ViewData["everyHotel"] as List<Hotel>;
+}
+<!DOCTYPE html>
+<html lang="en" >
+<!--! head -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+    <title>@ViewData["title"]</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/diagram.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<!--! body -->
+<body style="overflow:scroll !important">
+ <h1> Welcome Admin!</h1>
+
+<select name="hotels" id="hotels" onchange="getStats(this.value)">
+	@foreach (Hotel hotel in hotels)
+	{
+	    <option value="@hotel._id">@hotel._name</option>
+	}
+	</select>
+	
+    <div id="diagramDiv">	
+    </div>
+			
+
+    <input id="dateFromInp" type="date" oninput="if(document.querySelector('#dateToInp').value!=''){ searchHotels(); }"></input>
+    <input id="dateToInp" type="date" oninput="if(document.querySelector('#dateFromInp').value!=''){ searchHotels(); }"></input>
+
+<form id="hotelForm" enctype="multipart/form-data" method="post" action="/doHotelCreation">
+    <h2>@ViewData["Title"]</h2>   
+    <input name="hotelName" type="text" placeholder="hotel name">
+    <input name="starCount" type="text" placeholder="star rating">
+    <input name="country" type="text" placeholder="country">
+    <input name="city" type="text" placeholder="city">
+    <input name="address" type="text" placeholder="address">
+    <input name="hotelDescription" type="text" placeholder="description">
+    <input name="hotelImage" type="file" placeholder="image">
+
+    <div id="roomsForm">
+        <div class="roomForm">
+            <h2>Room 1<h2>
+            <button class="myButton" type="button" onclick="addRoomToForm()">+</button>
+            <input name="roomName1" type="text" placeholder="room name">
+            <input name="capacity1" type="text" placeholder="capacity">
+            <input name="pricePerNight1" type="text" placeholder="price per night">
+            <input name="roomDescription1" type="text" placeholder="description">
+            <input name="roomImage" type="file" placeholder="image">
+        </div>
+    </div>
+    <button class="myButton" type="submit">Create Hotel</button>
+
+</form>
+
+<script src="~/js/ajax.js"></script>
+<script>
+    let c=1;
+    function addRoomToForm()
+    {
+        c++;
+        document.querySelector("#roomsForm").innerHTML +=
+          ` <div class="roomForm">
+            <h2>Room ${c}<h2><button class="myButton" type="button" onclick="addRoomToForm()">+</button>
+            <input name="roomName${c}" type="text" placeholder="room name">
+            <input name="capacity${c}" type="text" placeholder="capacity">
+            <input name="pricePerNight${c}" type="text" placeholder="price per night">
+            <input name="roomDescription${c}" type="text" placeholder="description">
+            <input name="roomImage" type="file" placeholder="image"> </div>`
+    }
+</script>
+</body>

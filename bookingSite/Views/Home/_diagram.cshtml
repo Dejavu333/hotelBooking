@@ -1,0 +1,38 @@
+﻿@{
+	@using bookingSite.Models;
+	var hotel = ViewData["chosenHotel"] as Hotel;
+	DateTime d1 = DateTime.Parse(ViewData["from"] as string);
+	DateTime d2 = DateTime.Parse(ViewData["to"] as string);
+
+	//how many free rooms in the given timeframe
+	int freeRooms = hotel._rooms.Count(); ;
+	int totalRooms = hotel._rooms.Count();
+
+	foreach (Room r in hotel._rooms)
+	{
+		if (r._bookings != null)
+		{
+			foreach (Booking b in r._bookings)
+			{
+				if (b.checkInDate > d2 || b.checkOutDate < d1)
+				{
+					freeRooms--;
+				}
+			}
+		}
+	}
+	//calc percent
+	int percent = (int)((double)freeRooms / (double)totalRooms * 100);
+
+}
+
+@*<div class="pie highlight" data-start="0" data-value="@freeRepresOnChart"></div>
+<div class="pie" data-start="0" data-value="20"></div>
+<div class="pie" data-start="20" data-value="40"></div>
+<div class="pie big" data-start="@freeRepresOnChart" data-value="@left"></div>*@
+<div class="pie no-round" style="--p:@percent;--c:purple;--b:15px"> @percent%</div>
+
+<span>free: @freeRooms</span>
+<span>total: @totalRooms</span>
+
+

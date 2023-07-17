@@ -1,0 +1,52 @@
+﻿<ul class="menu list middleLayer" onclick="slideViaClick(event.target)">
+
+    <li class="leftmost">
+        <div class="content">
+            <h2>Feedback</h2>
+        </div>
+    </li>
+
+    <li class="prev">
+        <div class="content">
+            <h2>News</h2>
+        </div>
+    </li>
+
+    <li class="middle">
+		
+        <div class="content">
+
+            <h2>Find Your Well D-Served Hotel</h2>
+			
+            <input id="dateFromInp" type="date" oninput="if(document.querySelector('#dateToInp').value!=''){ searchHotels(); }"></input>
+            <input id="dateToInp" type="date" oninput="if(document.querySelector('#dateFromInp').value!=''){ searchHotels(); }"></input>
+            <input id="countryInp" type="text" placeholder="country" oninput="searchHotels()"></input><br>
+			
+            <div id="starsDiv" onclick="searchHotels()">
+                <div id="0"></div>
+                <div id="1"></div>
+                <div id="2"></div>
+                <div id="3"></div>
+                <div id="4"></div>			
+            </div>
+        </div>
+    </li>
+
+    <li class="next" id="loginCard">
+        <div class="content">
+        @* <h2>Login</h2>
+            <input class="userInpText" type="text" placeholder="username"></input><br>
+            <input class="userInpText" type="text" placeholder="password"></input><br>*@
+        <h2>My Bookings</h2>
+        <input id="emailInp" class="userInpText" type="text" placeholder="email"></input>
+        <button type="button" onclick="getBookingsByEmail()">Show</button>
+        </div>
+    </li>
+
+    <li class="rightmost">
+        <div class="content">
+            <h2>Ad</h2>
+        </div>
+    </li>
+
+</ul>

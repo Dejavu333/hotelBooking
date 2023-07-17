@@ -1,0 +1,48 @@
+﻿@{
+    @using bookingSite.Models;
+    @using MongoDB.Bson;
+
+    List<Hotel> hotels = (List<Hotel>)ViewData["hotelsSearched"];
+    string[] cardClassNames = new string[] { "middle", "next", "prev", "rightmost", "leftmost" };
+}
+
+<ul class="hotels list belowLayer" onclick="slideViaClick(event.target)">
+    @{
+        <!--for each Hotel received renders an info card-->
+        int i = 0;
+        foreach (Hotel h in hotels)
+        {		
+                        <!--position*-->
+                        <li class="@cardClassNames[i]" id=@h._id onmousedown="searchRoomsByHotel(middleLayerLevel,this)">                         
+                        
+                            <div class="content">
+
+                                <!--card title-->
+                                <h3>@h._name</h3>
+
+                                <!--stars-->
+                                @{string starCount = new String('★', h._starCount);}   
+                                <span class="starsFromDataStore">@starCount</span>
+
+                                <!--save icon-->
+                                <i style="float:right;margin-top: 0.85rem;" class="fa-solid fa-floppy-disk fa-lg"></i>
+
+                                <!--image of the hotel-->
+                                <img draggable="false" class="cardImg" src="~/imgs/hotelsImgs/@h._imgPath"><br>
+
+                                <!--details-->
+                                <span>From @h._startingPrice $</span><br>
+                                <span>@h._country</span><br>
+                                <span>@h._city</span><br>
+
+                            </div>
+
+                        </li>
+      
+            if (i < 4) { i++; }
+        
+        }<!--foreach ends-->
+			
+	}<!--code block ends-->
+	
+</ul>

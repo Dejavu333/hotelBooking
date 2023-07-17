@@ -1,0 +1,1 @@
+﻿mongodb+srv://franchise:asd123asd@franchise.erlq9q0.mongodb.net/?retryWrites=true&w=majority

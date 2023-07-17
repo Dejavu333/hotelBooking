@@ -1,0 +1,209 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+:root {
+	--dark: rgb(25, 25, 25);
+	--light: beige;
+	--primary: hsl(294, 27%, 55%);
+	--secondary: hsl(194, 27%, 55%);
+	--tertiary: hsl(94, 27%, 55%);
+	--primaryFont: 'Anton', sans-serif;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	user-select: none;
+}
+
+body {
+	background-color: var(--light);
+	overflow: hidden;
+	font-family: var(--primaryFont);
+	color: var(--dark);
+}
+
+h2 {
+	/* margin-bottom: 2rem; */
+}
+
+h3 {
+	/* margin-bottom: 1rem; */
+	display: inline-block;
+}
+
+/*!images*/
+.cardImg {
+	width: 19.5rem;
+	height: 13rem;
+	object-fit: cover;
+}
+
+/*!inputs*/
+input {
+	pointer-events:all;
+	position: relative;
+	background-color: var(--light);
+	border: none;
+	outline: none;
+	font-size: 1rem;
+	color: var(--dark);
+	z-index: 1000;
+}
+input::-webkit-datetime-edit {
+	padding: 0 0.3em;
+}
+#bookIcon, button {
+	pointer-events: all;
+}
+
+/*!ADMIN*/
+h1 {
+	margin-left: 0.25rem;
+}
+#hotelForm h2 {
+	display: inline;
+}
+#hotelForm {
+	margin: 0.25rem;
+}
+#hotelForm input {
+	margin: 0.25rem;
+	display: block;
+	background-color: white;
+}
+#roomsForm {
+	display:flex;
+	align-content:space-evenly;
+}
+
+
+
+#starsDiv {
+	display: flex;
+	justify-content: left;
+	align-items: center;
+}
+
+#starsDiv > div {
+	pointer-events: all;
+	width:1.5rem;
+	height:1.5rem;
+	display: block;
+	cursor: pointer;
+	font-size: 25px;
+}
+
+#starsDiv > div:after {
+	color: var(--light);
+	content: "\2606";
+}
+
+#starsDiv > .selected:after {
+	content: "\2605";
+}
+
+/*!cards*/
+.list > li {
+	list-style-type: none;
+	width: 20rem;
+	height: 20rem;
+	opacity: 1;
+	position: absolute;
+	left: -10rem;
+	transition: transform 1s, opacity 1s;
+}
+
+.content {
+	pointer-events: none;
+	margin: 0.25rem;
+}
+
+.list .prev,
+.list .next {
+	cursor: pointer;
+}
+
+.list .middle {
+	opacity: 0.5;
+	transform: translateX(0rem) scale(1);
+}
+
+.middleLayer > .middle {
+	opacity: 1;
+	transform: translateX(0rem) scale(1);
+}
+
+.list .prev {
+	opacity: 0.5;
+	transform: translateX(-21rem) scale(1);
+}
+
+.list .next {
+	opacity: 0.5;
+	transform: translateX(21rem) scale(1);
+}
+
+.list .leftmost {
+	transform: translateX(-42rem) scale(1);
+}
+
+.list .rightmost {
+	transform: translateX(42rem) scale(1);
+}
+
+.list .leftmost,
+.list .rightmost {
+	opacity: 0;
+	transition: opacity .5s, transform .5s;
+}
+
+.menu li {
+	background-color: var(--primary);
+}
+
+.hotels li {
+	background-color: var(--secondary);
+}
+
+.rooms li {
+	background-color: var(--tertiary);
+}
+
+/*!layers*/
+.list {
+	height: 20rem;
+	position: absolute;
+	top: 10rem;
+	left: 50%;
+	transform: translate(-50%, -50%)
+}
+
+.middleLayer {
+	opacity: 1;
+	transition: transform 1s, opacity 1s;
+	transform: translateY(0rem) scale(1);
+}
+
+.belowLayer {
+	opacity: 0.5;
+	transition: transform 1s, opacity 1s;
+	transform: translateY(21rem) scale(1);
+}
+
+.bottomLayer {
+	opacity: 0.25;
+	transition: transform 1s, opacity 1s;
+	transform: translateY(42rem) scale(1);
+}
+
+.aboveLayer {
+	opacity: 0.5;
+	transition: transform 1s, opacity 1s;
+	transform: translateY(-21rem) scale(1);
+}
+
+.topLayer {
+	opacity: 0.25;
+	transition: transform 1s, opacity 1s;
+	transform: translateY(-42rem) scale(1);
+}

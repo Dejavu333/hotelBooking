@@ -1,0 +1,43 @@
+﻿@{
+ViewData["title"] = "Hotel D-Served";
+var f = ViewData["hotelsSearched"];
+}
+
+<!DOCTYPE html>
+<html lang="en" >
+<!--! head -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+  <title>@ViewData["title"]</title>
+  <link rel="stylesheet" href="~/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<!--! body -->
+<body>
+	
+  <!--? partial:menu -->
+  <div id="_menuViewDiv">
+    @{ Html.RenderPartial("_menuView.cshtml");}
+  </div>
+
+  <!--? partial:hotels (ajax)-->
+  <div id="_hotelsViewDiv">
+  </div>
+
+  <!--? partial:rooms (ajax)-->
+  <div id="_roomsViewDiv">
+  </div>
+
+
+  <div class="swipeDiv"></div>
+
+<!--! scripts -->
+<script  src="~/js/gestures.js"></script>
+<script  src="~/js/navigation.js"></script>
+<script  src="~/js/starCount.js"></script>
+<script  src="~/js/ajax.js"></script>
+
+</body>
+
+</html>
